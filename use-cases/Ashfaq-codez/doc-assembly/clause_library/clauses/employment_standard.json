@@ -1,0 +1,10 @@
+{
+  "id": "EMPLOYMENT_STANDARD",
+  "version": "1.0.0",
+  "title": "Standard Employment Terms",
+  "body": "The Employee agrees to perform the duties assigned by the Employer. This employment is 'at-will', meaning either party may terminate the relationship at any time, with or without cause, subject to applicable statutory regulations.",
+  "formatting_hints": {
+    "style": "Standard Paragraph",
+    "page_break_before": false
+  }
+}
