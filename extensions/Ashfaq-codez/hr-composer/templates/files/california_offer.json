@@ -1,0 +1,7 @@
+{
+  "id": "ca_standard_v1",
+  "version": "1.0",
+  "jurisdiction": "CALIFORNIA",
+  "required_fields": ["candidate_name", "role", "salary"],
+  "body_template": "CALIFORNIA OFFER: Dear $candidate_name, we offer you the position of $role at $salary. This is AT-WILL employment."
+}

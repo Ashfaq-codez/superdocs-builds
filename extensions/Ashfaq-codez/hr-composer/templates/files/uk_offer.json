@@ -1,0 +1,7 @@
+{
+  "id": "uk_standard_v1",
+  "version": "1.0",
+  "jurisdiction": "UK",
+  "required_fields": ["candidate_name", "role", "salary"],
+  "body_template": "UK OFFER: Dear $candidate_name, we offer you the position of $role at $salary, subject to a 3-month notice period."
+}
