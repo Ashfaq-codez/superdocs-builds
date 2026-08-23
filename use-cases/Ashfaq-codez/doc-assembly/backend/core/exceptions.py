@@ -9,7 +9,7 @@ class ClauseResolutionError(DocAssemblyError):
     pass
 
 class InvalidRequestError(ClauseResolutionError):
-    """Raised when the input list is empty, contains blank IDs, or has duplicate IDs."""
+    """Raised when the input list is empty or contains blank IDs."""
     pass
 
 class ClauseNotFoundError(ClauseResolutionError):
@@ -19,6 +19,7 @@ class ClauseNotFoundError(ClauseResolutionError):
 class LibraryConfigurationError(ClauseResolutionError):
     """Raised when the library state is invalid (missing file, bad JSON, unsafe path, etc.)."""
     pass
+
 class AssemblyError(DocAssemblyError):
     """Base exception for document assembly errors."""
     pass
@@ -29,4 +30,12 @@ class EmptyAssemblyError(AssemblyError):
 
 class ClauseFormatError(AssemblyError):
     """Raised when a clause violates strict deterministic formatting rules."""
+    pass
+
+class AssemblyNotFoundError(DocAssemblyError):
+    """Raised when an orchestration operation requests an unknown assembly_id."""
+    pass
+
+class InvalidStateTransitionError(DocAssemblyError):
+    """Raised when a lifecycle transition is forbidden (e.g., export before approval)."""
     pass

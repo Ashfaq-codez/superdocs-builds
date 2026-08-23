@@ -4,7 +4,7 @@ from pydantic import BaseModel, Field
 
 
 class AssemblyState(str, Enum):
-    """Tracks the lifecycle of an assembly request."""
+    """Tracks the strict lifecycle of an assembly request."""
     ASSEMBLING = "ASSEMBLING"
     REVIEW_REQUIRED = "REVIEW_REQUIRED"
     APPROVED = "APPROVED"
@@ -36,7 +36,7 @@ class AssemblyRecord(BaseModel):
     """Internal orchestration model tracking local workflow and SuperDocs SDK references."""
     assembly_id: str
     status: AssemblyState = AssemblyState.ASSEMBLING
-    requested_clauses: List[str]
+    requested_clauses: List[str]  # Exact original request (with duplicates preserved)
     
     # SuperDocs external integration references
     document_id: Optional[str] = None
@@ -44,13 +44,15 @@ class AssemblyRecord(BaseModel):
     
     # Stores abstract artifacts retrieved after successful export
     artifacts: Optional[List[Dict[str, str]]] = None
-    
+
+
 class AssembledSection(BaseModel):
     """A normalized, structured representation of an assembled block."""
     source_clause_id: str
     title: str
     paragraphs: List[str]
     page_break_before: bool
+
 
 class AssembledDocument(BaseModel):
     """The pure, intermediate representation of the assembled document."""
