@@ -1,4 +1,5 @@
 {
   "CALIFORNIA": "files/california_offer.json",
-  "UK": "files/uk_offer.json"
+  "UK": "files/uk_offer.json",
+  "STANDARD": "files/standard_offer.json"
 }

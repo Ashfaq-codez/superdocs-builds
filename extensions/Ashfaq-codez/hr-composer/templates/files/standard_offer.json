@@ -1,0 +1,7 @@
+{
+  "id": "std_offer_v1",
+  "version": "1.0",
+  "jurisdiction": "STANDARD",
+  "required_fields": ["candidate_name", "role", "salary"],
+  "body_template": "STANDARD OFFER: Dear $candidate_name, we offer you the position of $role at $salary."
+}

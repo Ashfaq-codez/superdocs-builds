@@ -94,7 +94,30 @@ class TestHRComposerAPI(unittest.TestCase):
         
         resp_export = self.client.post(f"/compositions/{comp_id}/export", json={"formats": ["PDF"]})
         self.assertEqual(resp_export.status_code, 409) # InvalidStateTransitionError
+    def test_standard_jurisdiction_routing(self):
+        # Temporarily inject the STANDARD template into the test's isolated temp registry
+        with open(self.templates_path / "files/standard.json", "w") as f:
+            json.dump({
+                "id": "std_test", "version": "1.0", "jurisdiction": "STANDARD",
+                "required_fields": ["candidate_name", "role", "salary"],
+                "body_template": "Standard Offer for $candidate_name"
+            }, f)
+        
+        # Read existing registry, add STANDARD, and write it back
+        with open(self.templates_path / "registry.json", "r") as f:
+            registry = json.load(f)
+        registry["STANDARD"] = "files/standard.json"
+        with open(self.templates_path / "registry.json", "w") as f:
+            json.dump(registry, f)
 
+        # Test with a location that routes to STANDARD
+        std_record = {"hr_record": self.valid_hr_record["hr_record"].copy()}
+        std_record["hr_record"]["location"] = "New York, NY"
+        
+        resp_compose = self.client.post("/compositions", json=std_record)
+        self.assertEqual(resp_compose.status_code, 201)
+        self.assertEqual(resp_compose.json()["jurisdiction_applied"], "STANDARD")
+        self.assertEqual(resp_compose.json()["status"], "REVIEW_REQUIRED")
 
 if __name__ == "__main__":
     unittest.main()

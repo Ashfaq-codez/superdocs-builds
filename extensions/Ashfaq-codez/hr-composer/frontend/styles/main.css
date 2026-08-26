@@ -1,0 +1,39 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 16px;
+  color: #323130;
+  margin: 0;
+}
+h3 { margin-top: 0; font-weight: 600; color: #201f1e; }
+.hidden { display: none !important; }
+.field { margin-bottom: 12px; }
+label { display: block; font-size: 12px; margin-bottom: 4px; font-weight: 600; }
+input { width: 100%; box-sizing: border-box; padding: 6px 8px; border: 1px solid #8a8886; border-radius: 2px; }
+input:focus { outline: none; border-color: #0078D4; }
+
+button {
+  width: 100%; padding: 8px 16px; border: none; border-radius: 2px;
+  font-weight: 600; cursor: pointer; margin-bottom: 8px; font-size: 14px;
+}
+button:disabled { opacity: 0.6; cursor: not-allowed; }
+.btn-primary { background-color: #0078D4; color: white; }
+.btn-primary:hover:not(:disabled) { background-color: #106EBE; }
+.btn-success { background-color: #107C10; color: white; }
+.btn-danger { background-color: #D13438; color: white; }
+.btn-secondary { background-color: #EDEBE9; color: #323130; }
+
+.status-badge {
+  padding: 8px; font-weight: bold; text-align: center; border-radius: 2px; margin-bottom: 12px;
+}
+.status-REVIEW_REQUIRED { background-color: #FFF4CE; color: #795700; }
+.status-APPROVED { background-color: #DFF6DD; color: #107C10; }
+.status-REJECTED { background-color: #FDE7E9; color: #A4262C; }
+.status-EXPORTED { background-color: #E1DFDD; color: #323130; }
+
+#error-banner {
+  background-color: #FDE7E9; color: #A4262C; padding: 8px; border-left: 4px solid #D13438;
+  margin-bottom: 16px; font-size: 13px;
+}
+.details { font-size: 13px; margin-bottom: 16px; }
+.actions { display: flex; gap: 8px; }
+.actions button { flex: 1; }

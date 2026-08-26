@@ -11,7 +11,9 @@ class JurisdictionEngine:
         "LONDON": Jurisdiction.UK,
         "MANCHESTER": Jurisdiction.UK,
         "NEW YORK, NY": Jurisdiction.STANDARD,
-        "REMOTE - US": Jurisdiction.STANDARD
+        "REMOTE - US": Jurisdiction.STANDARD,
+        "BENGALURU": Jurisdiction.STANDARD, # New addition
+        "HASSAN": Jurisdiction.STANDARD
     }
 
     def resolve(self, location: str) -> Jurisdiction:

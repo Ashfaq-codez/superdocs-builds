@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>HR Composer</title>
+  <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+  <link rel="stylesheet" href="./styles/main.css" />
+</head>
+<body>
+  <div id="app">
+    <div id="error-banner" class="hidden"></div>
+    
+    <div id="form-view">
+      <h3>HR Record</h3>
+      <div class="field">
+        <label>Candidate Name *</label>
+        <input type="text" id="input-name" required />
+      </div>
+      <div class="field">
+        <label>Role *</label>
+        <input type="text" id="input-role" required />
+      </div>
+      <div class="field">
+        <label>Salary *</label>
+        <input type="text" id="input-salary" required />
+      </div>
+      <div class="field">
+        <label>Location *</label>
+        <input type="text" id="input-location" required />
+      </div>
+      <div class="field">
+        <label>Start Date *</label>
+        <input type="date" id="input-date" required />
+      </div>
+      <button id="btn-compose" class="btn-primary">Generate Offer</button>
+    </div>
+
+    <div id="status-view" class="hidden">
+      <h3>Document Status</h3>
+      <div class="status-badge" id="state-badge">Loading...</div>
+      
+      <div class="details">
+        <p><strong>Composition ID:</strong> <span id="lbl-id"></span></p>
+        <p><strong>Jurisdiction:</strong> <span id="lbl-jur"></span></p>
+      </div>
+
+      <div id="review-controls" class="hidden actions">
+        <button id="btn-approve" class="btn-success">Approve</button>
+        <button id="btn-reject" class="btn-danger">Reject</button>
+      </div>
+
+      <div id="export-controls" class="hidden actions">
+        <button id="btn-export" class="btn-primary">Export to PDF</button>
+      </div>
+      
+      <div id="artifacts-view" class="hidden">
+        <h4>Artifacts</h4>
+        <ul id="artifacts-list"></ul>
+      </div>
+      
+      <button id="btn-reset" class="btn-secondary" style="margin-top:20px;">Start Over</button>
+    </div>
+  </div>
+  <script type="module" src="./src/index.js"></script>
+</body>
+</html>
