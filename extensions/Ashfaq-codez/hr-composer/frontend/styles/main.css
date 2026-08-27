@@ -1,39 +1,194 @@
+/* Microsoft Fluent UI Color Palette & Variables */
+:root {
+  --theme-primary: #0078d4;
+  --theme-primary-hover: #106ebe;
+  --theme-secondary: #edebe9;
+  --theme-secondary-hover: #e1dfdd;
+  --text-primary: #323130;
+  --text-secondary: #605e5c;
+  --bg-body: #faf9f8;
+  --bg-surface: #ffffff;
+  --border-color: #8a8886;
+  --border-light: #e1dfdd;
+  --error-bg: #fde7e9;
+  --error-text: #a4262c;
+  --success-bg: #dff6dd;
+  --success-text: #107c10;
+  --warning-bg: #fff4ce;
+  --warning-text: #795700;
+}
+
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  padding: 16px;
-  color: #323130;
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+  padding: 0;
+  color: var(--text-primary);
+  background-color: var(--bg-body);
   margin: 0;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
 }
-h3 { margin-top: 0; font-weight: 600; color: #201f1e; }
-.hidden { display: none !important; }
-.field { margin-bottom: 12px; }
-label { display: block; font-size: 12px; margin-bottom: 4px; font-weight: 600; }
-input { width: 100%; box-sizing: border-box; padding: 6px 8px; border: 1px solid #8a8886; border-radius: 2px; }
-input:focus { outline: none; border-color: #0078D4; }
 
+#app {
+  padding: 24px;
+  max-width: 450px;
+  margin: 0 auto;
+}
+
+/* Cards & Containers */
+#form-view, #status-view {
+  background: var(--bg-surface);
+  padding: 28px 24px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border-light);
+}
+
+h3 {
+  margin-top: 0;
+  margin-bottom: 24px;
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border-light);
+  padding-bottom: 12px;
+}
+
+/* Forms & Inputs */
+.field {
+  margin-bottom: 18px;
+}
+
+label {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-size: 14px;
+  font-family: inherit;
+  background-color: #ffffff;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--theme-primary);
+  box-shadow: 0 0 0 1px var(--theme-primary);
+}
+
+/* Buttons */
 button {
-  width: 100%; padding: 8px 16px; border: none; border-radius: 2px;
-  font-weight: 600; cursor: pointer; margin-bottom: 8px; font-size: 14px;
+  width: 100%;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 14px;
+  font-family: inherit;
+  transition: background-color 0.2s, transform 0.1s;
+  margin-bottom: 10px;
 }
-button:disabled { opacity: 0.6; cursor: not-allowed; }
-.btn-primary { background-color: #0078D4; color: white; }
-.btn-primary:hover:not(:disabled) { background-color: #106EBE; }
-.btn-success { background-color: #107C10; color: white; }
-.btn-danger { background-color: #D13438; color: white; }
-.btn-secondary { background-color: #EDEBE9; color: #323130; }
 
-.status-badge {
-  padding: 8px; font-weight: bold; text-align: center; border-radius: 2px; margin-bottom: 12px;
+button:active:not(:disabled) {
+  transform: scale(0.98);
 }
-.status-REVIEW_REQUIRED { background-color: #FFF4CE; color: #795700; }
-.status-APPROVED { background-color: #DFF6DD; color: #107C10; }
-.status-REJECTED { background-color: #FDE7E9; color: #A4262C; }
-.status-EXPORTED { background-color: #E1DFDD; color: #323130; }
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-primary { background-color: var(--theme-primary); color: white; }
+.btn-primary:hover:not(:disabled) { background-color: var(--theme-primary-hover); }
+
+.btn-success { background-color: var(--success-text); color: white; }
+.btn-success:hover:not(:disabled) { background-color: #0b5a0b; }
+
+.btn-danger { background-color: var(--error-text); color: white; }
+.btn-danger:hover:not(:disabled) { background-color: #8b1f24; }
+
+.btn-secondary { background-color: var(--theme-secondary); color: var(--text-primary); }
+.btn-secondary:hover:not(:disabled) { background-color: var(--theme-secondary-hover); }
+
+/* Status Badges */
+.status-badge {
+  padding: 6px 12px;
+  font-weight: 600;
+  font-size: 12px;
+  border-radius: 16px;
+  margin-bottom: 24px;
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.status-REVIEW_REQUIRED { background-color: var(--warning-bg); color: var(--warning-text); border: 1px solid #fceca5; }
+.status-APPROVED { background-color: var(--success-bg); color: var(--success-text); border: 1px solid #c7e5c5; }
+.status-REJECTED { background-color: var(--error-bg); color: var(--error-text); border: 1px solid #f5d6d8; }
+.status-EXPORTED { background-color: var(--theme-secondary); color: var(--text-primary); border: 1px solid var(--border-light); }
+
+/* Data Display Details */
+.details {
+  background-color: var(--bg-body);
+  padding: 16px;
+  border-radius: 4px;
+  margin-bottom: 24px;
+  border: 1px solid var(--border-light);
+}
+
+.details p {
+  margin: 0 0 10px 0;
+  font-size: 13px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.details p:last-child { margin: 0; }
+.details strong { color: var(--text-secondary); font-weight: 600; }
+
+/* Control Layouts */
+.actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+  border-top: 1px solid var(--border-light);
+  padding-top: 24px;
+}
+
+.actions button { margin-bottom: 0; flex: 1; }
 
 #error-banner {
-  background-color: #FDE7E9; color: #A4262C; padding: 8px; border-left: 4px solid #D13438;
-  margin-bottom: 16px; font-size: 13px;
+  background-color: var(--error-bg);
+  color: var(--error-text);
+  padding: 12px 16px;
+  border-radius: 4px;
+  border-left: 4px solid var(--error-text);
+  margin-bottom: 24px;
+  font-size: 13px;
+  line-height: 1.5;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
-.details { font-size: 13px; margin-bottom: 16px; }
-.actions { display: flex; gap: 8px; }
-.actions button { flex: 1; }
+
+.hidden { display: none !important; }
+
+/* Artifact List Polish */
+#artifacts-view h4 {
+  margin: 24px 0 12px 0;
+  font-size: 13px;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-top: 1px solid var(--border-light);
+  padding-top: 24px;
+}
+
+ul { padding: 0; margin: 0; }

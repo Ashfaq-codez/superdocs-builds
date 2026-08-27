@@ -1,0 +1,7 @@
+{
+  "id": "uk_offer_v2",
+  "version": "2.0",
+  "jurisdiction": "UK",
+  "required_fields": ["candidate_name", "role", "salary", "location", "start_date"],
+  "body_template": "# Employment Offer\n\n## Candidate Details\nName: $candidate_name\nPosition: $role\nLocation: $location\nStart Date: $start_date\nCompensation: $salary\n\n## Terms and Conditions\nYour employment is subject to the Employment Rights Act 1996. After the probationary period, a minimum notice period of 1 month is required from either party for termination. Working hours comply with the Working Time Regulations 1998. \n\n## Signature\n___________________________\n$candidate_name\nDate: _______________"
+}

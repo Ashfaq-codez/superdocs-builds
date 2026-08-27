@@ -32,6 +32,11 @@
         <label>Start Date *</label>
         <input type="date" id="input-date" required />
       </div>
+            <!-- Add this inside the #form-view container, right below the Start Date field -->
+<div class="field">
+  <label for="input-benefits">Benefits Summary *</label>
+  <input type="text" id="input-benefits" placeholder="e.g. Standard Health, 401(k)" required />
+</div>
       <button id="btn-compose" class="btn-primary">Generate Offer</button>
     </div>
 
@@ -57,7 +62,7 @@
         <h4>Artifacts</h4>
         <ul id="artifacts-list"></ul>
       </div>
-      
+
       <button id="btn-reset" class="btn-secondary" style="margin-top:20px;">Start Over</button>
     </div>
   </div>

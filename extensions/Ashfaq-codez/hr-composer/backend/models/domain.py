@@ -10,13 +10,13 @@ class Jurisdiction(str, Enum):
 
 
 class HRRecord(BaseModel):
-    """The raw HR data input."""
     candidate_name: str
     role: str
     salary: str
     location: str
-    employment_type: str = "Full-Time"
     start_date: str
+    benefits: str  # <--- ADD THIS LINE
+    employment_type: Optional[str] = None # (Keep this if you already have it)
 
 
 class TemplateDefinition(BaseModel):

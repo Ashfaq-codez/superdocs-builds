@@ -46,26 +46,33 @@ export function render() {
     document.getElementById('review-controls').classList.toggle('hidden', d.status !== 'REVIEW_REQUIRED');
     document.getElementById('export-controls').classList.toggle('hidden', d.status !== 'APPROVED');
     
+    // 2. Enhanced Real Artifact Presentation
     const artifactsView = document.getElementById('artifacts-view');
     const artifactsList = document.getElementById('artifacts-list');
     if (d.status === 'EXPORTED' && d.artifacts) {
         artifactsView.classList.remove('hidden');
-        artifactsList.innerHTML = d.artifacts.map(a => 
-            `<li style="margin-bottom: 8px;">
-               <div style="display:flex; flex-direction:column; gap:4px;">
-                 <strong>${a.format} Document</strong> 
-                 <span style="background-color: #f3f2f1; padding: 6px 8px; border-radius: 4px; font-family: monospace; font-size: 12px; color: #605e5c; border: 1px solid #e1dfdd; word-break: break-all;">
-                   ${a.reference}
-                 </span>
-                 <em style="font-size: 11px; color: #a19f9d;">(Simulated Mock Environment Output)</em>
+        // Render actual clickable download buttons
+        artifactsList.innerHTML = d.artifacts.map(a => {
+            // Extract the filename from the reference (e.g., "cmp_123/offer_letter.pdf" -> "offer_letter.pdf")
+            const filename = a.reference.split('/').pop();
+            // Construct the real download URL mapped to our new Phase 5 endpoint
+            const downloadUrl = `http://localhost:8000/compositions/${d.composition_id}/artifacts/${filename}`;
+            
+            return `
+             <li style="margin-bottom: 8px; list-style: none;">
+               <div style="display:flex; justify-content:space-between; align-items:center; background-color: #f3f2f1; padding: 12px; border-radius: 4px; border: 1px solid #e1dfdd;">
+                 <strong style="font-size: 14px;">${a.format} Document</strong> 
+                 <a href="${downloadUrl}" target="_blank" download style="background-color: #0078D4; color: white; padding: 6px 12px; text-decoration: none; border-radius: 2px; font-weight: 600; font-size: 12px;">
+                    Download File
+                 </a>
                </div>
-             </li>`
-        ).join('');
+             </li>`;
+        }).join('');
     } else {
         artifactsView.classList.add('hidden');
         artifactsList.innerHTML = '';
     }
-}
+} // <--- THIS BRACE WAS MISSING
 
 export function getFormData() {
     return {
@@ -73,6 +80,7 @@ export function getFormData() {
         role: document.getElementById('input-role').value.trim(),
         salary: document.getElementById('input-salary').value.trim(),
         location: document.getElementById('input-location').value.trim(),
-        start_date: document.getElementById('input-date').value.trim()
+        start_date: document.getElementById('input-date').value.trim(),
+        benefits: document.getElementById('input-benefits').value.trim() // <--- Added this line
     };
 }

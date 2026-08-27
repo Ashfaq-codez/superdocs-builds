@@ -1,3 +1,7 @@
+import os
+from fastapi import HTTPException
+from fastapi.responses import FileResponse
+from backend.core.dependencies import RUNTIME_ARTIFACTS_DIR
 from fastapi import APIRouter, Depends, status
 from backend.core.dependencies import get_orchestrator
 from backend.models.api import ComposeRequest, ExportRequest, ComposerResponse
@@ -65,3 +69,24 @@ async def export_composition(
 ):
     record = await orchestrator.export_composition(composition_id, request.formats)
     return _to_response(record)
+
+@router.get("/{composition_id}/artifacts/{filename}")
+async def download_artifact(
+    composition_id: str, 
+    filename: str, 
+    orchestrator: ComposerOrchestrator = Depends(get_orchestrator)
+):
+    """Safely serves a generated physical artifact to the client."""
+    record = orchestrator.get_composition(composition_id)
+    
+    if not record.document_id:
+        raise HTTPException(status_code=404, detail="No document associated with this composition.")
+        
+    # Sanitize filename to prevent directory traversal attacks
+    safe_filename = os.path.basename(filename)
+    file_path = RUNTIME_ARTIFACTS_DIR / record.document_id / safe_filename
+    
+    if not file_path.exists():
+        raise HTTPException(status_code=404, detail="Artifact file not found on disk.")
+        
+    return FileResponse(path=file_path, filename=safe_filename)

@@ -1,0 +1,7 @@
+{
+  "id": "ca_offer_v2",
+  "version": "2.0",
+  "jurisdiction": "CALIFORNIA",
+  "required_fields": ["candidate_name", "role", "salary", "location", "start_date"],
+  "body_template": "# Employment Offer\n\n## Candidate Details\nName: $candidate_name\nPosition: $role\nLocation: $location\nStart Date: $start_date\nCompensation: $salary\n\n## Terms and Conditions\nThis is a California at-will employment agreement. Your employment with the Company is for no specific period of time. Either you or the Company may terminate your employment at any time and for any reason, with or without cause. All disputes shall be governed by the laws of the State of California.\n\n## Signature\n___________________________\n$candidate_name\nDate: _______________"
+}
