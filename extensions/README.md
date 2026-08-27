@@ -2,8 +2,6 @@
 
 *Built by Ashfaq ur Rahman for the SuperDocs Engineering Task.*
 
-![HR Composer UI Screenshot](./path-to-your-screenshot.png) 
-*(Note: Replace this image path with an actual screenshot of your web UI)*
 
 ## Overview
 This repository contains two decoupled, deterministic microservices built on a shared SDK:
